@@ -1,4 +1,4 @@
-from GamePy.models.calcular import Calcular
+from Python_Projects.GamePy.models.calcular import Calcular
 
 
 def main() -> None:
