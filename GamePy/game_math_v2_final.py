@@ -1,3 +1,10 @@
+"""
+Math Game - Final version
+
+This was the final version of a math game.
+The aim is to be a program using Python that can be used to train mathematical skills in an interactive way,
+using points to reward sucess.
+"""
 from Python_Projects.GamePy.models.calcular import Calcular
 
 
