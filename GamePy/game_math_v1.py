@@ -1,7 +1,7 @@
 """
 Math Game - Version 1 - Learning
 
-This was the fist version of a math game.
+This was the fist version of a math game in portuguese.
 The aim is to be a program that can be used to train mathematical skills in an interactive way,
 using points to reward sucess.
 """

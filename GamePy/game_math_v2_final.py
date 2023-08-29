@@ -1,7 +1,7 @@
 """
 Math Game - Final version
 
-This was the final version of a math game.
+This was the final version of a math game in portuguese.
 The aim is to be a program using Python that can be used to train mathematical skills in an interactive way,
 using points to reward sucess.
 """
