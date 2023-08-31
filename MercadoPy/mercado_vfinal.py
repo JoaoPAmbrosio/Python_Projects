@@ -1,3 +1,10 @@
+"""
+Market - Final Version
+
+This is the final version of a market program in portuguese.
+The aim is to be a program that can be used to simulate an online market, where the user can choose items with
+different quantities to add in a basket and in the end to buy them.
+"""
 from typing import List, Dict
 from time import sleep
 
@@ -6,8 +13,6 @@ from Python_Projects.MercadoPy.utils.helper import formata_float_str_moeda
 
 produtos: List[Produto] = []
 carrinho: List[Dict[Produto, int]] = []
-
-
 
 
 def main() -> None:
@@ -119,8 +124,6 @@ def visualizar_carrinho() -> None:
                 print(dado[0])
                 print(f'Quantidade: {dado[1]}')
                 print('------------------------')
-    # car = [{{a, b}, unid}, {{a, b}, unid}]
-    # {{a, b}, unid}
     else:
         print('Ainda nao possuem produtos no carrinho!')
     tempo = input('Aperte enter para sair')
@@ -135,7 +138,6 @@ def fechar_pedido() -> None:
         print('')
         valor_total: float = 0
         for item in carrinho:
-            # print(item) {<Python_Projects.MercadoPy.models.produto.Produto object at 0x000001D247546DD0>: 1}
             for dado in item.items():
                 print(dado[0])
                 print(f'Quantidade: {dado[1]}')
