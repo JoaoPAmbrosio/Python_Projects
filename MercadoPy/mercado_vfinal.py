@@ -58,7 +58,7 @@ def cadastrar_produto() -> None:
 
     produtos.append(produto)
 
-    print(f'O produto {produto.nome} foi cadastrado com sucesso!')
+    print(f"O produto '{produto.nome}' foi cadastrado com sucesso!")
     sleep(2)
     menu()
 
@@ -86,32 +86,22 @@ def comprar_produto() -> None:
 
         if produto:
             # Se nao é None
-            #Aqui fiz diferente
             no_carrinho: bool = False
-            # Ja no carrinho
             for item in carrinho:
-                # {{a: b}: unid}
                 quant: int = item.get(produto)
-                if quant > 0:
+                # nao pode ser usado is True:
+                if quant:
                     no_carrinho = True
                     item[produto] = quant + 1
-                    print(f'O produto {produto.nome} agora possui { quant + 1} unidades no carrinho')
-                '''
-                for dados in item.items():
-                    if dados[0] == produto:
-                        n = dados[1]
-                        dict[item] = {produto: n + 1}
-                        print(f'O produto {dados[0].nome} agora possui {dados[1]} unidades no carrinho')
-                        no_carrinho = True
-                        print(dados)'''
+                    print(f"O produto '{produto.nome}' agora possui { quant + 1} unidades no carrinho")
             # Ainda nao no carrinho
             if no_carrinho is False:
                 carrinho.append({produto: 1})
-                print(f'O produto {produto.nome.title()} foi adicionado no carrinho!')
+                print(f"O produto '{produto.nome.title()}' foi adicionado no carrinho!")
             sleep(2)
             menu()
         else:
-            print(f'O produto com codigo {codigo} não foi encontrado!')
+            print(f"O produto com codigo '{codigo}' não foi encontrado!")
             sleep(2)
             menu()
 
@@ -133,22 +123,30 @@ def visualizar_carrinho() -> None:
     # {{a, b}, unid}
     else:
         print('Ainda nao possuem produtos no carrinho!')
-    sleep(2)
+    tempo = input('Aperte enter para sair')
     menu()
 
 def fechar_pedido() -> None:
+
+    # Nao fancionando errumar!!!
+
     if len(carrinho) > 0:
         print('Fechar pedido')
         print('')
         valor_total: float = 0
         for item in carrinho:
-            print(item[Produto])
-            print(f'Quantidade: {item[1]}')
-            valor_total += item[Produto.preco] * item[1]
+            # print(item) {<Python_Projects.MercadoPy.models.produto.Produto object at 0x000001D247546DD0>: 1}
+            for dado in item.items():
+                print(dado[0])
+                print(f'Quantidade: {dado[1]}')
+                valor_total += dado[0].preco * dado[1]
+        print('--------------------------------------------')
         print(f'A sua fatura é {formata_float_str_moeda(valor_total)}')
+        print('--------------------------------------------')
         print(f'Volte sempre!')
         carrinho.clear()
         sleep(5)
+        menu()
     else:
         print('Carrinho vazio!')
         sleep(2)
