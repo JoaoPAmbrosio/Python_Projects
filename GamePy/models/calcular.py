@@ -80,7 +80,7 @@ class Calcular:
         if self.resultado == resposta:
             print('Resposta correta!')
             return True
-        print(f'Voce perdeu 1 pontom, o resultado deveria ser: {self.resultado}')
+        print(f'Voce perdeu 1 ponto, o resultado deveria ser: {self.resultado}')
         return False
 
     def mostrar_operacao(self: object) -> None:
