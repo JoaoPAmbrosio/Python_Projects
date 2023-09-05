@@ -1,14 +1,15 @@
 
-class Banco:
+class ContaBanco:
 
     contador = 10000
 
-    def __init__(self: object, nome: str, cpf: int) -> None:
-        self.__conta = Banco.contador
+    def __init__(self: object, nome: str, cpf: int, senha: str) -> None:
+        self.__conta = ContaBanco.contador
         self.__nome = nome
         self.__cpf = cpf
+        self.__senha = senha
         self.__saldo = 0
-        Banco.contador += 1
+        ContaBanco.contador += 1
 
     @property
     def conta(self: object) -> int:
@@ -23,6 +24,10 @@ class Banco:
         return self.__cpf
 
     @property
+    def senha(self: object) -> str:
+        return self.__senha
+
+    @property
     def saldo(self: object) -> int:
         return self.__saldo
 
@@ -33,9 +38,10 @@ class Banco:
         self.__saldo -= valor
 
     # ainda entender
-    def trasferencia_conta_b(self: object, conta_b: int, valor: int) -> None:
+    def trasferencia_conta_b(self: object, conta_destino: int, valor: int) -> None:
         self.__saldo -= valor
+        conta_destino.__saldo += valor
 
     def __str__(self) -> str:
-        return (f'Abertura de conta realizada Sr(a) {self.nome}! \nNumero de conta: {self.conta} \nCpf: {self.cpf}'
+        return (f'Abertura de conta realizada Sr(a) {self.nome}! \nNumero CC: {self.conta} \nSenha: {self.senha} '
                 f'\nSaldo: {self.saldo}')
