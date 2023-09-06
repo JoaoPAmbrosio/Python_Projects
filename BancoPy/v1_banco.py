@@ -1,43 +1,23 @@
 """
-Ao ser inicializada solicite ao usuario:
-
 Bem vindo ao Banco Ambrosio
-Digite 1 - Se deseja criar uma conta ao banco.
-    - criar conta
-Digite 2 - Se já possui conta ao banco
-    - Logar
-        (1) - extrato
-        (2) - efetuar saque
-        (3) - efetuar deposito
-        (4) - efetuar transferencia
-        (0) - sair do sistema
-Digite 0 - Para sair do sistema
-
-
-- listar contas
-
 
 """
-from Python_Projects.BancoPy.models.calcular import ContaBanco
+from Python_Projects.BancoPy.models.v1_calcular import ContaBanco
 from typing import List
 from time import sleep
 
-# banco_de_contas: List[ContaBanco] = []
-# banco_de_contas = []
 cc1 = ContaBanco('Joao', 11785978659, '123456')
 cc2 = ContaBanco('Pedro', 987654321, '654321')
-banco_de_contas: List[ContaBanco] = [cc1, cc2]
+banco_de_contas: List[ContaBanco] = []
+banco_de_contas.append(cc1)
+banco_de_contas.append(cc2)
 
 
 def main() -> None:
     menu()
 
+
 def menu() -> None:
-    """Varios prints
-    Bem vindo ao Banco Ambrosio
-Digite 1 - Se deseja criar uma conta ao banco.
-    - criar conta
-Digite 2 - Se já possui conta ao banco"""
     print('Bem vindo ao Banco Ambrosio\n'
           'Digite 1 - Para criar nova conta ao Banco\n'
           'Digite 2 - Se já possui conta ao Banco\n'
@@ -58,6 +38,7 @@ Digite 2 - Se já possui conta ao banco"""
         sleep(2)
     main()
 
+
 def menu_2() -> None:
     print('Digite a operação que deseja fazer: ')
     print('Digite 1 - Extrato\n'
@@ -71,8 +52,9 @@ def criar_conta() -> None:
     nome: str = input('Digite o nome: ')
     cpf: int = int(input('Digite CPF: '))
     senha: str = input('Digite sua senha: ')
-    banco_de_contas.append(ContaBanco(nome, cpf, senha))
-    print(ContaBanco(nome, cpf, senha))
+    ccx = ContaBanco(nome, cpf, senha)
+    banco_de_contas.append(ccx)
+    print(ccx)
 
 
 def logar() -> None:
@@ -118,7 +100,6 @@ def logar() -> None:
                                     while (val2 := int(input('Digite o valor a ser transferido: '))) > primaria.saldo:
                                         print(f'Saldo insuficiente! Voce possui R$ {float(primaria.saldo)} disponível.')
                                     transferencia(primaria, val2, secundaria)
-                            
             print('Senha ou usuario invalidos!')
             sleep(2)
         else:
@@ -127,22 +108,21 @@ def logar() -> None:
             menu()
 
 
-# conta: int, senha: str
-def extrato(cc) -> None:
-    print(cc.saldo)
+def extrato(cc: ContaBanco) -> None:
+    print(f'R$ {float(cc.saldo)}')
 
 
-def saque(cc, valor) -> None:
+def saque(cc: ContaBanco, valor: int) -> None:
     cc.sacar(valor)
     print(f'Valor sacado: {valor}\nNovo saldo: {cc.saldo}')
 
 
-def deposito(cc, valor) -> None:
+def deposito(cc: ContaBanco, valor: int) -> None:
     cc.depositar(valor)
     print(f'Valor depositado: {valor}\nNovo saldo: {cc.saldo}')
 
 
-def transferencia(cc, valor, conta_destino) -> None:
+def transferencia(cc: ContaBanco, valor: int, conta_destino) -> None:
     cc.trasferencia_conta_b(conta_destino, valor)
     print(f'Transferencia de R$ {float(valor)} , realizada à conta {conta_destino.conta}.\n'
           f'Novo saldo em conta: R$ {float(cc.saldo)}.')

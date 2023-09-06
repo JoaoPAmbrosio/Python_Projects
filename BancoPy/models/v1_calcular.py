@@ -38,7 +38,7 @@ class ContaBanco:
         self.__saldo -= valor
 
     # ainda entender
-    def trasferencia_conta_b(self: object, conta_destino: int, valor: int) -> None:
+    def trasferencia_conta_b(self: object, conta_destino: object, valor: int) -> None:
         self.__saldo -= valor
         conta_destino.__saldo += valor
 
