@@ -16,7 +16,8 @@ class Conta:
 
     def __str__(self: object) -> str:
         return (f'Número da conta: {self.numero} \nCliente: {self.cliente.nome} \n'
-                f'Saldo total: {formata_float_str_moeda(self.saldo_total)}')
+                f'Saldo total: {formata_float_str_moeda(self.__saldo_total)}')
+    # Nao sei a motivação, mas o self.saldo_total nao ta sendo puxado
 
     @property
     def numero(self: object) -> int:
@@ -42,23 +43,64 @@ class Conta:
     def limite(self: object, valor: float) -> None:
         self.__limite = valor
 
-    # Com o setter a mais torna possivel, nao somente buscar o valor com o property, mas enviar o valor, passando
-    # novo valor limite do usuario
-
     @property
     def saldo_total(self: object) -> float:
         return self.__saldo_total
+
+    @saldo.setter
+    def saldo_total(self: object, valor: float) -> None:
+        self.__saldo_total = valor
 
     @property
     def _calcula_saldo_total(self: object) -> float:
         return self.saldo + self.limite
 
     def depositar(self: object, valor: float) -> None:
-        pass
+        if valor > 0:
+            self.saldo = self.saldo + valor
+            self.saldo_total = self._calcula_saldo_total
+            print('Deposito efetuado com secesso!')
+        else:
+            print('Erro ao efetuar depósito. Tente novamente')
 
     def sacar(self: object, valor: float) -> None:
-        pass
+        if valor > 0 and self.saldo_total >= valor:
+            if self.saldo >= valor:
+                # property setter, pega a property getter e subtrai valor
+                self.saldo = self.saldo - valor
+                self.saldo_total = self._calcula_saldo_total
+            else:
+                restante: float = self.saldo - valor
+                self.limite = self.limite + restante
+                self.saldo = 0
+                self.saldo_total = self._calcula_saldo_total
+            print('Saque efetuado com sucesso')
+
+        else:
+            print('Saque não realizado. Tente novamente')
 
     def transferir(self: object, destino: object, valor: float) -> None:
-        pass
+        if 0 < valor <= self.saldo_total:
+            # line 85 == line 69
+            if self.saldo >= valor:
+                self.saldo = self.saldo - valor
+                self.saldo_total = self._calcula_saldo_total
+                destino.saldo = destino.saldo + valor
+                destino.saldo_total = destino._calcula_saldo_total
+            else:
+                restante: float = self.saldo - valor
+                self.saldo = 0
+                self.limite = self.limite + restante
+                self.saldo_total = self._calcula_saldo_total
+                destino.saldo = destino.saldo + valor
+                destino.saldo_total = destino._calcula_saldo_total
+            print('Transferencia realizada com sucesso')
+        else:
+            print('Transferencia não realizado. Tente novamente')
+
+
+# felicity: Cliente = Cliente('Felicity Jones', 'felicity@gmail.com', '123.456.789-10', '02/09/1987')
+# contaf: Conta = Conta(felicity)
+# print(contaf)
+
 

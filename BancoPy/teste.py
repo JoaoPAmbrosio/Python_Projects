@@ -24,8 +24,8 @@ angelina: Cliente = Cliente('Angelina Jolie', 'angelina@gmail.com', '234.567.891
 # print(felicity)
 # print(angelina)
 
-contaf: Cliente = Conta(felicity)
-contaa: Cliente = Conta(angelina)
+contaf: Conta = Conta(felicity)
+contaa: Conta = Conta(angelina)
 
 print(contaf)
 print(contaa)
