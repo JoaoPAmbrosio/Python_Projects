@@ -1,4 +1,5 @@
 '''
+# Teste banco 01
 from Python_Projects.BancoPy.models.v1_calcular import ContaBanco
 from typing import List, Dict
 
@@ -15,6 +16,7 @@ cc1.trasferencia_conta_b(cc2, 50)
 print(cc1.saldo)
 print(cc2.saldo)
 '''
+# Teste banco 02
 from Python_Projects.BancoPy.models.v2_cliente import Cliente
 from Python_Projects.BancoPy.models.v2_conta import Conta
 

@@ -1,6 +1,13 @@
+"""
+Bank - Version 2
+
+This was the fist version of a bank program in portuguese.
+The aim is to be a program that can be used to simulate an online bank, where the user can create an account and,
+ with it, make different types of financial transactions as withdrawals, deposits, transfers, etc.
+"""
+
 from typing import List
 from time import sleep
-
 from Python_Projects.BancoPy.models.v2_cliente import Cliente
 from Python_Projects.BancoPy.models.v2_conta import Conta
 
@@ -84,7 +91,7 @@ def efetuar_saque() -> None:
             valor: float = float(input('Informe o valor do saque: '))
             conta.sacar(valor)
             # Nome do metodo é efetuar saque e nao sacar
-            # Aqui nao tem regras de saldo, limite, que estao definidas na classe e nao programa
+            # Aqui nao tem regras de saldo, limite, que estao definidas na classe e nao no programa
         else:
             print(f'Não foi encontrada a conta com número {numero}')
     else:
@@ -146,4 +153,3 @@ def buscar_conta_por_numero(numero: int) -> Conta:
 
 if __name__ == '__main__':
     main()
-

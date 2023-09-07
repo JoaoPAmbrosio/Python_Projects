@@ -1,6 +1,9 @@
 """
-Bem vindo ao Banco Ambrosio
+Bank - Version 1
 
+This was the fist version of a bank program in portuguese.
+The aim is to be a program that can be used to simulate an online bank, where the user can create an account and,
+ with it, make different types of financial transactions as withdrawals, deposits, transfers, etc.
 """
 from Python_Projects.BancoPy.models.v1_calcular import ContaBanco
 from typing import List
