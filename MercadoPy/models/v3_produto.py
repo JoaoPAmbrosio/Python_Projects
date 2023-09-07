@@ -1,4 +1,5 @@
-from Python_Projects.MercadoPy.utils.helper import formata_float_str_moeda
+from Python_Projects.MercadoPy.utils.v3_helper import formata_float_str_moeda
+
 
 class Produto:
     contador: int = 1
@@ -24,4 +25,3 @@ class Produto:
     def __str__(self) -> str:
         return f'Código: {self.codigo} \nNome: {self.nome} \nPreço: {formata_float_str_moeda(self.preco)}'
     # quando imprime a classe, o str é imprimido
-

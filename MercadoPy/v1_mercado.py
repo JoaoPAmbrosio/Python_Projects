@@ -118,6 +118,3 @@ while mercado:
         valor_compra = soma_total_compra(carrinho)
         print(f'Valor total: R$ {float(valor_compra)} \nMuito obrigado pela preferencia!')
         mercado = False
-
-
-

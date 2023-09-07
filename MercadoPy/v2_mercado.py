@@ -5,7 +5,7 @@ This was the second version of a market program in portuguese.
 The aim is to be a program that can be used to simulate an online market, where the user can choose items with
 different quantities to add in a basket and in the end to buy them.
 """
-from Python_Projects.MercadoPy.models.calcular_v2 import Mercado
+from Python_Projects.MercadoPy.models.v2_calcular import Mercado
 
 dados_totais = [{'nome': 'abacaxi', 'valor': 3, 'quantidade': 0},
                   {'nome': 'abacate', 'valor': 2, 'quantidade': 0},
@@ -36,17 +36,14 @@ while mercado:
     while (x := int(input('\nDigite: \n1 -> Ver lista com valores.\n2 -> Visualizar o carrinho.\n3 -> Comprar.\n'
               '4 -> Concluir compra\n5 -> Para cadastrar novo produto.\n0 -> Para sair\nDigite o que deseja: '))) not in opcoes:
         print('Voce digitou um valor errado!')
-
     if x == 0:
         print('Compra cancelada! Muito obrigado e volte sempre!')
         mercado = False
-
     # 1 -> Ver lista com valores.
     elif x == 1:
         for item in info_mercado.banco_de_dados:
            print(f"{item['nome'].title()}: R$ {float(item['valor'])}", end=', ')
         enter = input('\nPrecione enter para seguir:')
-
     # 2 -> Visualizar o carrinho. (Melhorar!)
     elif x == 2:
         if len(info_mercado.carrinho) == 0:
@@ -58,7 +55,6 @@ while mercado:
                       f"R$ {i['valor']}/kg")
             print(f'Soma valor parcial: R$ {float(info_mercado.soma_total_compra)}')
         enter = input('Precione enter para seguir:')
-
     # 3 -> Comprar.
     elif x == 3:
         while info_mercado.procurar_item(compra := input('Digite o que deseja comprar ou digite sair: ')) is False:
@@ -67,7 +63,6 @@ while mercado:
             print('Nao encontrada! Cadastre ou digite corretamente')
         if compra.lower() != 'sair':
             compra = compra.lower()
-
             # Verificar se ja tem um mesmo no carrinho e alterar
             qtd = 0
             for i in info_mercado.carrinho:
@@ -78,13 +73,11 @@ while mercado:
             if qtd == 0:
                 qtd = int(input('Digite a quantidade que deseja comprar: '))
                 info_mercado.carrinho.append({'nome': compra, 'valor': info_mercado.procurar_valor(compra), 'quantidade': qtd})
-
     # 4 -> Concluir compra
     elif x == 4:
         valor_compra = info_mercado.soma_total_compra
         print(f'Valor total: R$ {float(valor_compra)} \nMuito obrigado pela preferencia!')
         mercado = False
-
     # 5 -> Para cadastrar novo produto.
     elif x == 5:
         compra = input('Digite o item que deseja cadastrar: ')
@@ -94,7 +87,3 @@ while mercado:
             valor = int(input('Digite o valor do item: '))
             qtd = 0
             info_mercado.banco_de_dados.append({'nome': compra, 'valor': valor, 'quantidade': qtd})
-
-
-
-

@@ -1,15 +1,14 @@
 """
-Market - Final Version
+Market - Version 03
 
-This is the final version of a market program in portuguese.
+This is the third version of a market program in portuguese.
 The aim is to be a program that can be used to simulate an online market, where the user can choose items with
 different quantities to add in a basket and in the end to buy them.
 """
 from typing import List, Dict
 from time import sleep
-
-from Python_Projects.MercadoPy.models.produto import Produto
-from Python_Projects.MercadoPy.utils.helper import formata_float_str_moeda
+from Python_Projects.MercadoPy.models.v3_produto import Produto
+from Python_Projects.MercadoPy.utils.v3_helper import formata_float_str_moeda
 
 produtos: List[Produto] = []
 carrinho: List[Dict[Produto, int]] = []
@@ -67,6 +66,7 @@ def cadastrar_produto() -> None:
     sleep(2)
     menu()
 
+
 def listar_produtos() -> None:
     if len(produtos) > 0:
         print('Lista de produtos')
@@ -79,6 +79,7 @@ def listar_produtos() -> None:
         print('Ainda nao existem produtos cadastrados.')
         sleep(2)
         menu()
+
 
 def comprar_produto() -> None:
     if len(produtos) > 0:
@@ -115,6 +116,7 @@ def comprar_produto() -> None:
         sleep(2)
         menu()
 
+
 def visualizar_carrinho() -> None:
     if len(carrinho) > 0:
         print('Vizualizar carrinho')
@@ -129,10 +131,8 @@ def visualizar_carrinho() -> None:
     tempo = input('Aperte enter para sair')
     menu()
 
+
 def fechar_pedido() -> None:
-
-    # Nao fancionando errumar!!!
-
     if len(carrinho) > 0:
         print('Fechar pedido')
         print('')
@@ -154,6 +154,7 @@ def fechar_pedido() -> None:
         sleep(2)
         menu()
 
+
 def pega_produto_por_codigo(codigo: int) -> Produto:
     p: Produto = None
 
@@ -162,7 +163,6 @@ def pega_produto_por_codigo(codigo: int) -> Produto:
             p = produto
     return p
 
+
 if __name__ =='__main__':
     main()
-
-
