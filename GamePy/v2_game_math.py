@@ -1,11 +1,11 @@
 """
-Math Game - Final version
+Math Game - Version 02
 
-This was the final version of a math game in portuguese.
+This was the second version of a math game in portuguese.
 The aim is to be a program using Python that can be used to train mathematical skills in an interactive way,
 using points to reward sucess.
 """
-from Python_Projects.GamePy.models.calcular import Calcular
+from Python_Projects.GamePy.models.v2_calcular import Calcular
 
 
 def main() -> None:
